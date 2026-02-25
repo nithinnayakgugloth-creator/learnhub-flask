@@ -6,7 +6,6 @@ app.secret_key = "secret123"
 users = []
 
 
-cursor = db.cursor(dictionary=True)
 
 # ---------------- HOME ----------------
 @app.route("/")
@@ -77,3 +76,4 @@ def quiz():
 if __name__ == "__main__":
 
     app.run(debug=True)
+
