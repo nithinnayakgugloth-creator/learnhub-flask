@@ -6,30 +6,37 @@
 </head>
 <body>
 
-<!-- NAVBAR -->
 <div class="navbar">
     <div class="logo">LearnHub</div>
     <div class="nav-links">
-        <a href="/">Home</a>
         <a href="/courses">Courses</a>
         <a href="/logout">Logout</a>
     </div>
 </div>
 
-<h1>Welcome, {{ username }} 👋</h1>
-<p>You are successfully logged in 🎉</p>
+<div class="container">
 
-<div class="course-container">
-    <div class="course-card">
-        <h3>Python Programming</h3>
-        <a href="/python">Continue Learning</a>
+<h1>Welcome to Your Dashboard</h1>
+
+<div class="dashboard-cards">
+
+    <div class="dash-card">
+        <h3>📘 Courses</h3>
+        <p>Continue learning programming</p>
+        <a href="/courses">View Courses</a>
     </div>
 
-    <div class="course-card">
-        <h3>Java Programming</h3>
-        <a href="/java">Continue Learning</a>
+    <div class="dash-card">
+        <h3>🧠 Quiz</h3>
+        <p>Test your Python knowledge</p>
+        <a href="/quiz">Take Quiz</a>
     </div>
+
+</div>
+
 </div>
 
 </body>
 </html>
+</html>
+
