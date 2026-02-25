@@ -6,37 +6,42 @@
 </head>
 <body>
 
+<div id="particles-js"></div>
+
 <div class="navbar">
     <div class="logo">LearnHub</div>
     <div class="nav-links">
         <a href="/">Home</a>
-        <a href="/courses">Courses</a>
         <a href="/login">Login</a>
     </div>
 </div>
 
-<div class="container">
+<div class="container reveal">
 <h1>Our Courses</h1>
 
 <div class="course-container">
 
     <div class="course-card">
         <img src="https://cdn-icons-png.flaticon.com/512/919/919852.png">
-        <h3>Python Programming</h3>
-        <a href="/python">Start Learning</a>
+        <h3>Python</h3>
+        <a href="/python">Start</a>
     </div>
 
     <div class="course-card">
         <img src="https://cdn-icons-png.flaticon.com/512/226/226777.png">
-        <h3>Java Programming</h3>
-        <a href="/java">Start Learning</a>
+        <h3>Java</h3>
+        <a href="/java">Start</a>
     </div>
 
 </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+<script>
+particlesJS("particles-js", {
+  particles: { number: { value: 50 }, size: { value: 3 }, move: { speed: 2 } }
+});
+</script>
+
 </body>
 </html>
-</html>
-
-
