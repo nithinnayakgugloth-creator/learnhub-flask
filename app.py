@@ -1,16 +1,10 @@
 from flask import Flask, render_template, request, redirect, session
-import mysql.connector
+
 
 app = Flask(__name__)
 app.secret_key = "secret123"
+users = []
 
-# ---------------- MYSQL CONNECTION ----------------
-db = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="2005",   
-    database="learnhub"
-)
 
 cursor = db.cursor(dictionary=True)
 
@@ -24,22 +18,14 @@ def home():
 def courses():
     return render_template("courses.html")
 
-# ---------------- SIGNUP ----------------
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
     if request.method == "POST":
-        username = request.form["username"]
-        password = request.form["password"]
-
-        try:
-            cursor.execute(
-                "INSERT INTO users (username, password) VALUES (%s, %s)",
-                (username, password)
-            )
-            db.commit()
-            return redirect("/login")
-        except:
-            return "Username already exists"
+        users.append({
+            "username": request.form["username"],
+            "password": request.form["password"]
+        })
+        return redirect("/login")
 
     return render_template("signup.html")
 
@@ -47,18 +33,13 @@ def signup():
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
-        username = request.form["username"]
-        password = request.form["password"]
-
-        cursor.execute(
-            "SELECT * FROM users WHERE username=%s AND password=%s",
-            (username, password)
-        )
-        user = cursor.fetchone()
-
-        if user:
-            session["user"] = user["username"]
-            return redirect("/dashboard")
+        for user in users:
+            if (
+                user["username"] == request.form["username"]
+                and user["password"] == request.form["password"]
+            ):
+                session["user"] = user["username"]
+                return redirect("/dashboard")
 
         return "Invalid Login"
 
@@ -94,4 +75,5 @@ def quiz():
 
 # ---------------- RUN APP ----------------
 if __name__ == "__main__":
+
     app.run(debug=True)
