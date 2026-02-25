@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="logo">LearnHub</div>
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/courses">Courses</a>
+        <a href="/logout">Logout</a>
+    </div>
+</div>
+
+<h1>Welcome, {{ username }} 👋</h1>
+<p>You are successfully logged in 🎉</p>
+
+<div class="course-container">
+    <div class="course-card">
+        <h3>Python Programming</h3>
+        <a href="/python">Continue Learning</a>
+    </div>
+
+    <div class="course-card">
+        <h3>Java Programming</h3>
+        <a href="/java">Continue Learning</a>
+    </div>
+</div>
+
+</body>
+</html>

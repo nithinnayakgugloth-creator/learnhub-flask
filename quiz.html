@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Python Quiz</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="logo">LearnHub</div>
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/courses">Courses</a>
+        <a href="/login">Login</a>
+    </div>
+</div>
+
+<h1>Python Quiz</h1>
+
+<div class="quiz-box">
+
+<form id="quizForm">
+
+    <p>1. Python is a ____ language.</p>
+    <input type="radio" name="q1" value="correct"> Interpreted<br>
+    <input type="radio" name="q1" value="wrong"> Compiled<br><br>
+
+    <p>2. Which keyword is used to define a function?</p>
+    <input type="radio" name="q2" value="correct"> def<br>
+    <input type="radio" name="q2" value="wrong"> function<br><br>
+
+    <p>3. Which symbol is used for comments?</p>
+    <input type="radio" name="q3" value="correct"> #<br>
+    <input type="radio" name="q3" value="wrong"> //<br><br>
+
+    <button type="button" onclick="checkAnswers()">Submit Quiz</button>
+
+</form>
+
+<p id="result"></p>
+
+</div>
+
+<a href="/python">⬅ Back to Python Course</a>
+
+<!-- CORRECT JS LOAD -->
+<script src="{{ url_for('static', filename='quiz.js') }}"></script>
+</body>
+</html>
