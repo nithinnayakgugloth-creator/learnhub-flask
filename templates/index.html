@@ -3,23 +3,65 @@
 <head>
     <title>LearnHub</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
 </head>
 <body>
 
-<!-- NAVBAR -->
+<div id="loader"></div>
+<div id="particles-js"></div>
+
 <div class="navbar">
     <div class="logo">LearnHub</div>
     <div class="nav-links">
-        <a href="/">Home</a>
-        <a href="/courses">View Courses</a>
+        <a href="/courses">Courses</a>
         <a href="/login">Login</a>
     </div>
 </div>
 
-<h1>Welcome to LearnHub</h1>
-<p>Learn Programming Step by Step</p>
+<div class="container reveal">
+    <h1><span id="typing"></span></h1>
+</div>
 
-<a href="/courses">View Courses</a>
+<script>
+/* Typing */
+const text = "Welcome to LearnHub 🚀";
+let i = 0;
+function typeEffect() {
+    if (i < text.length) {
+        document.getElementById("typing").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeEffect, 80);
+    }
+}
+window.onload = function(){
+    typeEffect();
+    document.getElementById("loader").style.display = "none";
+};
+
+/* Particles */
+particlesJS("particles-js", {
+  particles: {
+    number: { value: 60 },
+    size: { value: 3 },
+    move: { speed: 2 },
+    line_linked: { enable: true },
+    color: { value: "#ffffff" }
+  }
+});
+
+/* Scroll Reveal */
+function reveal() {
+  var reveals = document.querySelectorAll(".reveal");
+  for (var i = 0; i < reveals.length; i++) {
+    var windowHeight = window.innerHeight;
+    var elementTop = reveals[i].getBoundingClientRect().top;
+    if (elementTop < windowHeight - 100) {
+      reveals[i].classList.add("active");
+    }
+  }
+}
+window.addEventListener("scroll", reveal);
+</script>
 
 </body>
 </html>
