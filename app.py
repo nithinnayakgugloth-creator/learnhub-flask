@@ -216,9 +216,27 @@ def admin():
         return redirect("/courses")
 
     return render_template("admin.html")
+@app.route("/create_tables")
+def create_tables():
+    conn = get_db_connection()
+    cur = conn.cursor()
 
+    cur.execute("""
+    CREATE TABLE IF NOT EXISTS enrollments (
+        id SERIAL PRIMARY KEY,
+        user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+        course_id INTEGER REFERENCES courses(id) ON DELETE CASCADE
+    );
+    """)
+
+    conn.commit()
+    cur.close()
+    conn.close()
+
+    return "Tables created!"
 # ================= RUN =================
 
 if __name__ == "__main__":
     app.run(debug=True)
+
 
